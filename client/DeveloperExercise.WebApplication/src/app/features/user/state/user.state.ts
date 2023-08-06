@@ -26,16 +26,17 @@ export class UserState {
         console.log(action)
         return this.userService.getUserCalculations().pipe(
             tap(userCalcs => {
-                ctx.patchState({...ctx.getState(), userCalculations: userCalcs })
+                ctx.patchState({ userCalculations: userCalcs })
+                console.log(ctx.getState())
             }))
     }
 
     @Action(SaveUserAction)
     saveUser(ctx: StateContext<SaveUserAction>, action: SaveUserAction) {
         console.log(action)
-        ctx.patchState({...ctx.getState(), user: action.user })
         return this.userService.saveUser(action.user).pipe(
             tap(() => {
+                ctx.patchState({user: action.user })
                 ctx.dispatch(new GetUserCalculationAction())
             }))
     }
