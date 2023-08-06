@@ -14,7 +14,7 @@ export class UserDetailsComponent {
   public userForm = this.formBuilder.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    socialSkills: this.formBuilder.array([], Validators.required),
+    socialSkills: this.formBuilder.array([]),
     socialAccounts: this.formBuilder.array([]),
   });
 
