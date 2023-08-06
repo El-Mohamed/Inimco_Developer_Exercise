@@ -4,17 +4,19 @@ import { tap } from 'rxjs';
 import { UserStateModel } from './user-state.model';
 import { UserService } from '../user.service';
 import { GetUserCalculationAction, SaveUserAction } from './user.actions';
+import { User } from '../models/user.model';
+import { UserCalculations } from '../models/user-calculations.model';
 
 @State<UserStateModel>({ name: 'userstate' })
 @Injectable()
 export class UserState {
 
-    @Selector() static userCalculations(state: UserStateModel) {
+    @Selector() static userCalculations(state: UserStateModel): UserCalculations | undefined  {
         return state.userCalculations;
     }
 
-    @Selector() static userData(state: UserStateModel) {
-        return state.userData;
+    @Selector() static user(state: UserStateModel): User | undefined {
+        return state.user;
     }
 
     constructor(private userService: UserService) { }
@@ -25,6 +27,7 @@ export class UserState {
         return this.userService.getUserCalculations().pipe(
             tap(userCalcs => {
                 ctx.patchState({ userCalculations: userCalcs })
+                console.log(ctx.getState())
             }))
     }
 
@@ -33,7 +36,7 @@ export class UserState {
         console.log(action)
         return this.userService.saveUser(action.user).pipe(
             tap(() => {
-                ctx.patchState({ user: action.user })
+                ctx.patchState({user: action.user })
                 ctx.dispatch(new GetUserCalculationAction())
             }))
     }

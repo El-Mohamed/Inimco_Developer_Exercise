@@ -23,10 +23,10 @@ namespace DeveloperExercise.Application.Queries.GetPersonCalculations
             {
                 FirstName = person.FirstName,
                 LastName = person.LastName,
-                FullName = person.FirstName + person.LastName,
-                NumberOfConsonants = _personService.GetConsonantCount(person.FirstName),
-                ReverseFullName = "",
-                NumberOfVowels = 2
+                FullName = person.FirstName + " " + person.LastName,
+                NumberOfConsonants = _personService.GetConsonantCount(person),
+                ReverseFullName = _personService.GetReverseName(person),
+                NumberOfVowels = _personService.GetVowelCount(person)
             };
 
             return result;

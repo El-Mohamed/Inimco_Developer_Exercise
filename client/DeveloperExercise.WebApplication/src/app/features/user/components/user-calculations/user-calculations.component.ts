@@ -12,6 +12,6 @@ import { User } from '../../models/user.model';
 })
 export class UserCalculationsComponent {
   @Select(UserState.userCalculations) userCalculations$?: Observable<UserCalculations>;
-  @Select(UserState.userData) user$?: Observable<User>;
+  @Select(UserState.user) user$?: Observable<User>;
 
 }

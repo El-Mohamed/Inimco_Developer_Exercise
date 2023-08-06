@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
 import { User } from '../../models/user.model';
 import { SaveUserAction } from '../../state/user.actions';
@@ -14,7 +14,7 @@ export class UserDetailsComponent {
   public userForm = this.formBuilder.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    socialSkills: this.formBuilder.array([], Validators.required),
+    socialSkills: this.formBuilder.array([]),
     socialAccounts: this.formBuilder.array([]),
   });
 
@@ -22,11 +22,13 @@ export class UserDetailsComponent {
   }
 
   saveUser() {
+    if(this.userForm.invalid) return;
+    
     const user = this.userForm.value as User;
+    console.log(user)
     this.store.dispatch(new SaveUserAction(user))
   }
 
-  // Social Accounts FormArray
   get socialAccountsFormArray(): FormArray {
     return this.userForm.get('socialAccounts') as FormArray;
   }
@@ -54,12 +56,12 @@ export class UserDetailsComponent {
 
   addSocialSkill(): void {
     const socialSkills = this.userForm.get('socialSkills') as FormArray;
-    socialSkills.push(this.createSocialSkill());
+    socialSkills.push(this.createSocialSkill(socialSkills.length));
   }
 
-  createSocialSkill(): FormGroup {
-    return this.formBuilder.group({
-      skill: ['', Validators.required]
+  createSocialSkill(controlName: number): FormControl {
+    return this.formBuilder.control({
+      [`${controlName}`]: [' ', Validators.required]
     });
   }
 
@@ -68,3 +70,6 @@ export class UserDetailsComponent {
     socialSkills.removeAt(index);
   }
 }
+
+
+
