@@ -9,31 +9,32 @@ import { GetUserCalculationAction, SaveUserAction } from './user.actions';
 @Injectable()
 export class UserState {
 
-  @Selector() static userCalculations(state: UserStateModel) {
-    return state.userCalculations;
-  }
+    @Selector() static userCalculations(state: UserStateModel) {
+        return state.userCalculations;
+    }
 
-  @Selector() static userData(state: UserStateModel) {
-    return state.userData;
-  }
+    @Selector() static userData(state: UserStateModel) {
+        return state.userData;
+    }
 
-  constructor(private userService: UserService) { }
+    constructor(private userService: UserService) { }
 
-  @Action(GetUserCalculationAction)
-  getUserInvite(ctx: StateContext<UserStateModel>, action: GetUserCalculationAction) {
-    console.log(action)
-    return this.userService.getUserCalculations().pipe(
-      tap(userCalcs => {
-        ctx.patchState({ userCalculations: userCalcs })
-      }))
-  }
+    @Action(GetUserCalculationAction)
+    getUserInvite(ctx: StateContext<UserStateModel>, action: GetUserCalculationAction) {
+        console.log(action)
+        return this.userService.getUserCalculations().pipe(
+            tap(userCalcs => {
+                ctx.patchState({ userCalculations: userCalcs })
+            }))
+    }
 
-  @Action(SaveUserAction)
-  saveUser(ctx: StateContext<SaveUserAction>, action: SaveUserAction) {
-    ctx.patchState({ user: action.user })
-    return this.userService.saveUser(action.user).pipe(
-      tap(() => {
-        ctx.dispatch(new GetUserCalculationAction())
-      }))
-  }
+    @Action(SaveUserAction)
+    saveUser(ctx: StateContext<SaveUserAction>, action: SaveUserAction) {
+        console.log(action)
+        return this.userService.saveUser(action.user).pipe(
+            tap(() => {
+                ctx.patchState({ user: action.user })
+                ctx.dispatch(new GetUserCalculationAction())
+            }))
+    }
 }

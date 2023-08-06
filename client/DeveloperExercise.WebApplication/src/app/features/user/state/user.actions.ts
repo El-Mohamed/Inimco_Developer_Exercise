@@ -2,7 +2,6 @@ import { User } from "../models/user.model";
 
 export class GetUserCalculationAction {
     static readonly type = '[Users] Get Get User Calculation';
-  
 }
 
 export class SaveUserAction {

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Select, Store } from '@ngxs/store';
-import { UserState } from '../../state/user.state';
-import { Observable } from 'rxjs';
+import { Store } from '@ngxs/store';
 import { User } from '../../models/user.model';
 import { SaveUserAction } from '../../state/user.actions';
 
@@ -13,10 +11,7 @@ import { SaveUserAction } from '../../state/user.actions';
 })
 export class UserDetailsComponent {
 
-  @Select(UserState.userData) userData$?: Observable<User>;
-
   public userForm = this.formBuilder.group({
-    id: ['', Validators.required],
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     socialSkills: this.formBuilder.array([], Validators.required),
@@ -29,12 +24,6 @@ export class UserDetailsComponent {
   saveUser() {
     const user = this.userForm.value as User;
     this.store.dispatch(new SaveUserAction(user))
-  }
-
-  createSocialSkill(): FormGroup {
-    return this.formBuilder.group({
-      skill: ['', Validators.required]
-    });
   }
 
   // Social Accounts FormArray
@@ -53,16 +42,6 @@ export class UserDetailsComponent {
     });
   }
 
-  addSocialSkill(): void {
-    const socialSkills = this.userForm.get('socialSkills') as FormArray;
-    socialSkills.push(this.createSocialSkill());
-  }
-
-  removeSocialSkill(index: number): void {
-    const socialSkills = this.userForm.get('socialSkills') as FormArray;
-    socialSkills.removeAt(index);
-  }
-
   addSocialAccount(): void {
     const socialAccounts = this.userForm.get('socialAccounts') as FormArray;
     socialAccounts.push(this.createSocialAccount());
@@ -71,5 +50,21 @@ export class UserDetailsComponent {
   removeSocialAccount(index: number): void {
     const socialAccounts = this.userForm.get('socialAccounts') as FormArray;
     socialAccounts.removeAt(index);
+  }
+
+  addSocialSkill(): void {
+    const socialSkills = this.userForm.get('socialSkills') as FormArray;
+    socialSkills.push(this.createSocialSkill());
+  }
+
+  createSocialSkill(): FormGroup {
+    return this.formBuilder.group({
+      skill: ['', Validators.required]
+    });
+  }
+
+  removeSocialSkill(index: number): void {
+    const socialSkills = this.userForm.get('socialSkills') as FormArray;
+    socialSkills.removeAt(index);
   }
 }
