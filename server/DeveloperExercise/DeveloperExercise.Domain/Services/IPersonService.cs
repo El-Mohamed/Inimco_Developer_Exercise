@@ -1,9 +1,11 @@
+using DeveloperExercise.Domain.Model;
+
 namespace DeveloperExercise.Domain.Services
 {
     public interface IPersonService
     {
-        int GetVowelCount(string input);
-        int GetConsonantCount(string input);
-        string GetReverseName(string firstName, string lastName);
+        int GetVowelCount(Person person);
+        int GetConsonantCount(Person person);
+        string GetReverseName(Person person);
     }
 }

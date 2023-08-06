@@ -1,21 +1,30 @@
+using DeveloperExercise.Domain.Model;
+
 namespace DeveloperExercise.Domain.Services
 {
     public class PersonService : IPersonService
     {
-        public int GetConsonantCount(string input)
+        public int GetConsonantCount(Person person)
         {
-            return input.Count();
+            var fullName = person.FirstName + " " + person.LastName;
+            var formatted = fullName.Trim().ToLower();
+            return formatted.Count(c => !("aeiou".Contains(c)));
+
         }
 
-        public string GetReverseName(string firstName, string lastName)
+        public string GetReverseName(Person person)
         {
-            return $"{firstName} {lastName}"; // TODO
+            var fullName = person.FirstName + " " + person.LastName;
+            char[] charArray = fullName.ToCharArray();
+            Array.Reverse(charArray);
+            return new string(charArray);
         }
 
-        public int GetVowelCount(string input)
+        public int GetVowelCount(Person person)
         {
-            var formatted = input.Trim();
-            return formatted.Count();
+            var fullName = person.FirstName + " " + person.LastName;
+            var formatted = fullName.Trim().ToLower();
+            return formatted.Count(c => "aeiou".Contains(c));
         }
     }
 }
