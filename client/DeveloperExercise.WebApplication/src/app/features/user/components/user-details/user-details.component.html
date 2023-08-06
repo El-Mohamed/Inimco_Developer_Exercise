@@ -4,7 +4,7 @@
     <input class="create-user__input" placeholder="Last Name" formControlName="lastName" />
   
     <div class="create-user__input" formArrayName="socialSkills">
-        <div *ngFor="let skillCtrl of socialSkillsFormArray.controls; let i = index">
+        <div *ngFor="let skillCtrl of socialSkillsFormArray.controls; let i = index" >
           <input type="text" [formControlName]="i" />
           <button type="button" (click)="removeSocialSkill(i)">Remove Skill</button>
         </div>
