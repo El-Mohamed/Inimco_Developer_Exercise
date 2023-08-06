@@ -15,8 +15,8 @@ export class UserState {
         return state.userCalculations;
     }
 
-    @Selector() static userData(state: UserStateModel): User | undefined {
-        return state.userData;
+    @Selector() static user(state: UserStateModel): User | undefined {
+        return state.user;
     }
 
     constructor(private userService: UserService) { }
