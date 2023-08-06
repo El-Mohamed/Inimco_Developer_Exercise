@@ -25,10 +25,10 @@ namespace DeveloperExercise.Api.Controllers
         }
 
         [HttpPost(Name = "SavePerson")]
-        public async Task<IActionResult> SavePerson([FromBody] Person person)
+        public async Task<SavePersonCommandResult> SavePerson([FromBody] Person person)
         {
             var result = await _mediator.Send(new SavePersonCommand() { NewPerson = person });
-            return new OkObjectResult(result);
+            return result;
         }
     }
 }
