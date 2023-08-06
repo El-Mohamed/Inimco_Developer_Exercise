@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using DeveloperExercise.Infrastructure.IOC;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DeveloperExercise.Application.IOC
 {
@@ -6,7 +7,7 @@ namespace DeveloperExercise.Application.IOC
     {
         public static IServiceCollection AddApplicationLayerServices(this IServiceCollection services)
         {
-
+            services.AddInfrastructureLayerServices();  
             return services;
         }
     }

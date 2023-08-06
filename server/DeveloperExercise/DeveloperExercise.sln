@@ -3,13 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeveloperExercise.Api", "DeveloperExercise.Api\DeveloperExercise.Api.csproj", "{5F2FA55A-0A7B-4B4D-801C-BB9C30A885E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeveloperExercise.Api", "DeveloperExercise.Api\DeveloperExercise.Api.csproj", "{5F2FA55A-0A7B-4B4D-801C-BB9C30A885E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeveloperExercise.Domain", "DeveloperExercise.Domain\DeveloperExercise.Domain.csproj", "{C4610913-589F-40F0-82CC-08AB744D70E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeveloperExercise.Domain", "DeveloperExercise.Domain\DeveloperExercise.Domain.csproj", "{C4610913-589F-40F0-82CC-08AB744D70E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeveloperExercise.Application", "DeveloperExercise.Application\DeveloperExercise.Application.csproj", "{B008B3CF-4CE0-43CA-B23D-C37B2437340D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeveloperExercise.Application", "DeveloperExercise.Application\DeveloperExercise.Application.csproj", "{B008B3CF-4CE0-43CA-B23D-C37B2437340D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeveloperExercise.Infrastructure", "DeveloperExercise.Infrastructure\DeveloperExercise.Infrastructure.csproj", "{928F51B8-3A9F-436F-8E3B-9423C51A359A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeveloperExercise.Infrastructure", "DeveloperExercise.Infrastructure\DeveloperExercise.Infrastructure.csproj", "{928F51B8-3A9F-436F-8E3B-9423C51A359A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D8A32A6D-4817-4227-96A7-4AC821896246}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
