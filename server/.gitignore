@@ -1,0 +1,30 @@
+# ASP.NET Core
+## Visual Studio temporary files
+.vs/
+/bin/
+/obj/
+*.dbmdl
+*.jfm
+*.user
+*.suo
+*.cache
+*.sln.docstates
+*.nuget/
+*.pfx
+*.snk
+
+## Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[bB]uild/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+## Visual Studio 2015/2017/2019 cache/options directory
+.vs/
