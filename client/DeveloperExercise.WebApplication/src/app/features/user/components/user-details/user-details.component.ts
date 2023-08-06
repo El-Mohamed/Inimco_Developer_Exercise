@@ -22,6 +22,8 @@ export class UserDetailsComponent {
   }
 
   saveUser() {
+    if(this.userForm.invalid) return;
+    
     const user = this.userForm.value as User;
     console.log(user)
     this.store.dispatch(new SaveUserAction(user))
