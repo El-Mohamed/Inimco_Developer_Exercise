@@ -56,13 +56,11 @@ export class UserDetailsComponent {
 
   addSocialSkill(): void {
     const socialSkills = this.userForm.get('socialSkills') as FormArray;
-    socialSkills.push(this.createSocialSkill(socialSkills.length));
+    socialSkills.push(this.createSocialSkill());
   }
 
-  createSocialSkill(controlName: number): FormControl {
-    return this.formBuilder.control({
-      [`${controlName}`]: [' ', Validators.required]
-    });
+  createSocialSkill(): FormControl {
+    return this.formBuilder.control('')
   }
 
   removeSocialSkill(index: number): void {
