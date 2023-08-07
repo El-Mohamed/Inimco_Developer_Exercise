@@ -1,7 +1,6 @@
 using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
-using MediatR.Pipeline;
 
 public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
 {
