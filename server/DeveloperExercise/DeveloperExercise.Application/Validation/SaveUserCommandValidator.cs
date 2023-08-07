@@ -5,7 +5,7 @@ public class SaveUserCommandValidator : AbstractValidator<SavePersonCommand>
 {
     public SaveUserCommandValidator()
     {
-        RuleFor(command => command.NewPerson.FirstName).NotNull();
-        RuleFor(command => command.NewPerson.LastName).NotNull();
+        RuleFor(command => command.NewPerson.FirstName).MinimumLength(3);
+        RuleFor(command => command.NewPerson.LastName).NotEmpty();
     }
 }
