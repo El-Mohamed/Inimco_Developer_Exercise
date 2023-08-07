@@ -1,0 +1,32 @@
+<form class="create-user" [formGroup]="userForm">
+    <input class="create-user__input" placeholder="First Name" formControlName="firstName" />
+  
+    <input class="create-user__input" placeholder="Last Name" formControlName="lastName" />
+  
+    <div class="create-user__input" formArrayName="socialSkills">
+        <div *ngFor="let skillCtrl of socialSkillsFormArray.controls; let i = index" >
+          <input type="text" [formControlName]="i" />
+          <button type="button" (click)="removeSocialSkill(i)">Remove Skill</button>
+        </div>
+        <button type="button" (click)="addSocialSkill()">Add Skill</button>
+      </div>
+    
+      <div class="create-user__input" formArrayName="socialAccounts">
+        <div *ngFor="let accountCtrl of socialAccountsFormArray.controls; let i = index" [formGroupName]="i">
+          <label for="type">Type:</label>
+          <input type="text" id="type" formControlName="type" />
+    
+          <label for="address">Address:</label>
+          <input type="text" id="address" formControlName="address" />
+    
+          <button type="button" (click)="removeSocialAccount(i)">Remove Account</button>
+        </div>
+        <button type="button" (click)="addSocialAccount()">Add Account</button>
+      </div>
+    
+      <button type="submit" (click)="saveUser()">Submit</button>
+</form>
+
+<br><hr>
+
+<app-user-calculations></app-user-calculations>

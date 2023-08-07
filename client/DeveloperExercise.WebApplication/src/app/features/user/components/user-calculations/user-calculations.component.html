@@ -1,0 +1,11 @@
+<p>Calculations from backend</p>
+
+<div *ngIf="(userCalculations$ | async)">
+ 
+<p>The number of VOWELS: {{ (userCalculations$ | async)?.numberOfVowels }}</p>
+<p>The number of CONSTENANTS: {{ (userCalculations$ | async)?.numberOfConsonants }}</p>
+<p>The firstname + last name entered: {{ (userCalculations$ | async)?.fullName }}</p>
+<p>The reverse version of the firstname and lastname:{{ (userCalculations$ | async)?.reverseFullName }} </p>
+<p>The JSON format of the entire object: {{user$| async | json }}</p>
+
+</div>
