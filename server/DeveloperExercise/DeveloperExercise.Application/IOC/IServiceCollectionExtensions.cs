@@ -1,4 +1,7 @@
+using DeveloperExercise.Application.Command.SavePerson;
 using DeveloperExercise.Infrastructure.IOC;
+using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,7 +13,12 @@ namespace DeveloperExercise.Application.IOC
         {
             services.AddInfrastructureLayerServices(configuration);
 
+            services.AddScoped<IValidator<SavePersonCommand>, SaveUserCommandValidator>();
+
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(IServiceCollectionExtensions).Assembly));
+
             return services;
         }
     }
