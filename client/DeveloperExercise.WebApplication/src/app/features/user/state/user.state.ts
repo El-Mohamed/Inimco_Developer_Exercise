@@ -19,14 +19,19 @@ export class UserState {
         return state.user;
     }
 
+    @Selector() static userCalculationsLoading(state: UserStateModel) {
+        return state.userCalculationsLoading;
+    }
+
     constructor(private userService: UserService) { }
 
     @Action(GetUserCalculationAction)
     getUserInvite(ctx: StateContext<UserStateModel>, action: GetUserCalculationAction) {
         console.log(action)
+        ctx.patchState({ userCalculationsLoading: true })
         return this.userService.getUserCalculations().pipe(
             tap(userCalcs => {
-                ctx.patchState({ userCalculations: userCalcs })
+                ctx.patchState({ userCalculations: userCalcs, userCalculationsLoading: false })
                 console.log(ctx.getState())
             }))
     }

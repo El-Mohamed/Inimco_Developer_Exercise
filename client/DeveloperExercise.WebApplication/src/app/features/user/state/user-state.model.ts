@@ -3,6 +3,7 @@ import { User } from "../models/user.model";
 
 export class UserStateModel {
     userCalculations?: UserCalculations;
+    userCalculationsLoading?: boolean;
     user?: User;
 }
   

@@ -24,7 +24,7 @@
         <button type="button" (click)="addSocialAccount()">Add Account</button>
       </div>
     
-      <button type="submit" (click)="saveUser()">Submit</button>
+      <button [disabled]="userForm.invalid" type="submit" (click)="saveUser()">Submit</button>
 </form>
 
 <br><hr>
