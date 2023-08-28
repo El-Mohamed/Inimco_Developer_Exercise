@@ -1,5 +1,7 @@
 <p>Calculations from backend</p>
-
+<h1 *ngIf="(userCalculationsLoading$ | async) === true">
+    Loading Data...
+</h1>
 <div *ngIf="(userCalculations$ | async)">
  
 <p>The number of VOWELS: {{ (userCalculations$ | async)?.numberOfVowels }}</p>
