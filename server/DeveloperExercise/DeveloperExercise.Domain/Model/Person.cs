@@ -47,6 +47,16 @@ namespace DeveloperExercise.Domain.Model
             };
         }
 
+        public void AddSocialAccount(SocialAccount socialAccount)
+        {
+            if (socialAccount == null)
+            {
+                throw new ArgumentNullException(nameof(socialAccount));
+            }
+
+            SocialAccounts.Add(socialAccount);
+        }
+
         public void ChangeName(string newName)
         {
             if (string.IsNullOrWhiteSpace(newName))
