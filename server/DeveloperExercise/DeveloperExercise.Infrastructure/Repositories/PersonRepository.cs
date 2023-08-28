@@ -19,6 +19,11 @@ namespace DeveloperExercise.Infrastructure.Repositories
             return Task.FromResult(person);
         }
 
+        public Task<List<SocialAccount>> GetSocialAccounts(CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task SavePerson(Person person, CancellationToken cancellationToken)
         {
             string jsonString = JsonSerializer.Serialize(person);
